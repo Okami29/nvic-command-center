@@ -37,7 +37,7 @@ export default function Dashboard({ data, go }) {
             </p>
           </div>
           <div className="flex flex-col items-end gap-4">
-            <img src="/nvu-logo.svg" alt="New Vision University" className="h-10 w-auto opacity-90" />
+            <img src="nvu-logo.svg" alt="New Vision University" className="h-10 w-auto opacity-90" />
             <div className="flex gap-3 sm:gap-4">
               {[[t('დღე', 'Days'), cd.d], [t('საათი', 'Hours'), cd.h], [t('წუთი', 'Min'), cd.m], [t('წამი', 'Sec'), cd.s]].map(([l, v]) => (
                 <div key={l} className="card !rounded-2xl px-3 py-3 sm:px-5 sm:py-4 text-center min-w-[64px] sm:min-w-[76px] bg-ink-950">
