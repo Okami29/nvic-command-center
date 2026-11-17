@@ -1,21 +1,33 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { demoFetch } from './demo.mjs'
 
-// ---------- api ----------
+// ---------- api (falls back to in-browser demo store when no server) ----------
+let DEMO = false
+async function req(path, init) {
+  if (!DEMO) {
+    try {
+      const r = await fetch(path, init)
+      return await r.json()
+    } catch (e) {
+      DEMO = true
+    }
+  }
+  return demoFetch(path, init)
+}
 export const api = {
   async get(path) {
-    const r = await fetch(path, { headers: Api.user() })
-    return r.json()
+    return req(path, { headers: Api.user() })
   },
   async send(path, method, body, isForm) {
     const h = Api.user()
-    const r = await fetch(path, {
+    return req(path, {
       method,
       headers: isForm ? h : { 'Content-Type': 'application/json', ...h },
       body: isForm ? body : (body ? JSON.stringify(body) : undefined)
     })
-    return r.json()
   },
-  user: () => ({ 'x-user': encodeURIComponent(localStorage.getItem('nvic-user') || 'guest') })
+  user: () => ({ 'x-user': encodeURIComponent(localStorage.getItem('nvic-user') || 'guest') }),
+  isDemo: () => DEMO
 }
 const Api = api
 
