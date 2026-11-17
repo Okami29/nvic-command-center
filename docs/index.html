@@ -98,6 +98,7 @@ footer a{color:var(--cyd)}
 <p class="sub" id="sub"></p>
 <div class="cd" id="cd"></div>
 <p class="reg" id="reg"></p>
+<p style="margin-top:14px"><a id="appcta" href="../" style="display:inline-block;background:var(--cyd);color:#fff;text-decoration:none;font-weight:700;font-size:14px;border-radius:999px;padding:12px 26px"></a></p>
 <div class="stats" id="stats"></div>
 </div>
 
@@ -131,6 +132,7 @@ function render(){
   document.getElementById('h1').innerHTML = lang==='ka' ? 'ნიუ ვიჟენის ინოვაციების<br><em>კონკურსი</em>' : 'New Vision Innovation<br><em>Challenge</em>';
   document.getElementById('sub').textContent = t(L.sub);
   document.getElementById('reg').innerHTML = '<b>'+t(L.reg)+'</b>';
+  document.getElementById('appcta').textContent = lang==='ka' ? 'გახსენით საორგანიზაციო პლატფორმა — სრული დემო' : 'Open the organizing platform — full demo';
   document.getElementById('stats').innerHTML = L.stats.map(s=>'<div class="stat"><b>'+s[0]+'</b><span>'+(lang==='ka'?s[1]:s[2])+'</span></div>').join('');
   document.getElementById('ovT').textContent = lang==='ka'?'მიმოხილვა':'Overview';
   document.getElementById('ovP').innerHTML = L.overview.map(p=>'<p style="color:var(--mut);font-size:15px;margin-bottom:12px">'+t(p)+'</p>').join('');
