@@ -88,7 +88,7 @@ function Shell() {
   if (!data) return (
     <div className="h-full blueprint flex items-center justify-center">
       <div className="text-center">
-        <img src="/nvu-logo.svg" alt="New Vision University" className="h-14 w-auto mx-auto mb-5" />
+        <img src="nvu-logo.svg" alt="New Vision University" className="h-14 w-auto mx-auto mb-5" />
         <div className="font-display text-xl font-semibold tracking-tight">{t('საორგანიზაციო სივრცე იტვირთება…', 'Preparing the organizing hub…')}</div>
         <div className="text-mut text-sm mt-2 pulse-dot">New Vision Innovation Challenge</div>
       </div>
@@ -100,7 +100,7 @@ function Shell() {
       {/* sidebar */}
       <aside className="hidden md:flex w-64 shrink-0 border-r border-line bg-white/85 backdrop-blur-md flex-col">
         <div className="px-5 pt-6 pb-5 border-b border-line">
-          <img src="/nvu-logo.svg" alt="New Vision University" className="h-11 w-auto" />
+          <img src="nvu-logo.svg" alt="New Vision University" className="h-11 w-auto" />
           <div className="mt-3.5">
             <div className="font-display font-bold tracking-tight leading-tight text-lg">NVIC <span className="text-cy">{t('საორგანიზაციო სივრცე', 'Launch Hub')}</span></div>
             <div className="text-[11px] text-dim mt-0.5">New Vision Innovation Challenge</div>
@@ -206,7 +206,7 @@ function Shell() {
       </div>
 
       <Modal open={picker} onClose={() => setPicker(false)} title={t('ვინ მუშაობს?', "Who's working?")}>
-        <img src="/nvu-logo.svg" alt="New Vision University" className="h-9 w-auto mb-4 -mt-2" />
+        <img src="nvu-logo.svg" alt="New Vision University" className="h-9 w-auto mb-4 -mt-2" />
         <p className="text-mut text-sm mb-4 -mt-2">{t('თქვენი სახელი ემაგრება ყველა ცვლილებას, რომელსაც აკეთებთ, რათა საორგანიზაციო გუნდმა ყოველთვის იცოდეს, ვინ რა შეცვალა. პაროლი არ სჭირდება — ეს შიდა საგუნდო ინსტრუმენტია.', 'Your name is attached to every change you make, so the organizing team always knows who did what. No password — this is an internal team tool.')}</p>
         <IdentityPicker onDone={(name) => { setUser(name); localStorage.setItem('nvic-user', name); setPicker(false); refresh() }} />
       </Modal>

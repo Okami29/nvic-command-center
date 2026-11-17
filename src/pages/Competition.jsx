@@ -466,7 +466,7 @@ export default function Competition() {
         <section>
           <H id="overview" icon="eye" ka="მიმოხილვა" en="Overview" />
           <div className="card glow-cy p-6 sm:p-8 space-y-4 rise">
-            <img src="/nvu-logo.svg" alt="New Vision University" className="h-9 w-auto opacity-90" />
+            <img src="nvu-logo.svg" alt="New Vision University" className="h-9 w-auto opacity-90" />
             {D.overview.map(([ka, en], k) => <p key={k} className="text-mut leading-relaxed text-sm sm:text-base">{lang === 'ka' ? ka : en}</p>)}
             <div className="flex flex-wrap gap-2 pt-1">
               {[[t('სეზონი', 'Season'), '2026–2027'], [t('გახსნა', 'Launch'), 'Nov 30, 2026'], [t('ფინალი', 'Final'), 'Mar 20, 2027'], [t('კატეგორიები', 'Categories'), '4'], [t('რაუნდები', 'Rounds'), '3']].map(([l, v]) => (
