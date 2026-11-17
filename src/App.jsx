@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { api, Icon, Badge, Bar, Btn, Modal, Field, inp } from './ui.jsx'
 import { LangProvider, useLang, useT, kaTask, kaDoc, kaEvent, kaResp, kaQuestion, kaNote, kaActor } from './i18n.jsx'
 import Dashboard from './pages/Dashboard.jsx'
+import Competition from './pages/Competition.jsx'
 import Checklist from './pages/Checklist.jsx'
 import Documents from './pages/Documents.jsx'
 import Sponsors from './pages/Sponsors.jsx'
@@ -14,6 +15,7 @@ import Activity from './pages/Activity.jsx'
 
 const NAV = [
   ['dashboard', 'მიმოხილვა', 'Dashboard', 'dash'],
+  ['competition', 'კონკურსი — სრული აღწერა', 'The Competition', 'trophy'],
   ['checklist', 'დაწყებისთვის მოსამზადებელი ამოცანები', 'Launch Checklist', 'check'],
   ['documents', 'დოკუმენტები', 'Documents', 'doc'],
   ['sponsors', 'სპონსორები და პარტნიორები', 'Sponsors & Partners', 'users'],
@@ -177,6 +179,7 @@ function Shell() {
 
         <main className="flex-1 overflow-y-auto px-4 sm:px-8 py-8">
           {page === 'dashboard' && <Dashboard data={data} refresh={refresh} go={go} />}
+          {page === 'competition' && <Competition />}
           {page === 'checklist' && <Checklist data={data} refresh={refresh} />}
           {page === 'documents' && <Documents data={data} refresh={refresh} />}
           {page === 'sponsors' && <Sponsors data={data} refresh={refresh} />}
