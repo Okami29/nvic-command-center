@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { api, Icon, Badge, Bar, Btn, Modal, Field, inp } from './ui.jsx'
+import { demoReset } from './demo.mjs'
 import { LangProvider, useLang, useT, kaTask, kaDoc, kaEvent, kaResp, kaQuestion, kaNote, kaActor } from './i18n.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import Competition from './pages/Competition.jsx'
@@ -56,8 +57,9 @@ function Shell() {
   const [picker, setPicker] = useState(!localStorage.getItem('nvic-user'))
   const [q, setQ] = useState('')
   const [results, setResults] = useState(null)
+  const [demo, setDemo] = useState(false)
 
-  const refresh = () => api.get('/api/bootstrap').then(setData)
+  const refresh = () => api.get('/api/bootstrap').then((d) => { setData(d); setDemo(api.isDemo()) })
   useEffect(() => { refresh() }, [])
   useEffect(() => { localStorage.setItem('nvic-page', page) }, [page])
 
@@ -176,6 +178,17 @@ function Shell() {
             </button>
           </div>
         </header>
+
+        {demo && (
+          <div className="px-4 sm:px-8 pt-4 -mb-4">
+            <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border border-amb/30 bg-amb/10 text-amb px-4 py-2.5 text-xs sm:text-sm">
+              <span className="font-bold">◈ {t('წინასწარი ნახვის რეჟიმი', 'Preview mode')}</span>
+              <span className="opacity-90">{t('სრული პლატფორმა მუშაობს ბრაუზერში — ყველა ცვლილება ინახება მხოლოდ ამ მოწყობილობაზე.', 'The full platform runs in your browser — every change is saved on this device only.')}</span>
+              <button onClick={() => confirm(t('მონაცემები საწყის მდგომარეობაში დაბრუნდეს?', 'Reset demo data to the original state?')) && demoReset()}
+                className="ml-auto underline underline-offset-2 font-semibold opacity-80 hover:opacity-100">{t('დემოს გადატვირთვა', 'Reset demo')}</button>
+            </div>
+          </div>
+        )}
 
         <main className="flex-1 overflow-y-auto px-4 sm:px-8 py-8">
           {page === 'dashboard' && <Dashboard data={data} refresh={refresh} go={go} />}
